@@ -14,14 +14,14 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class CommandeController extends AbstractController
-{       
+{
     ////////////////////////////////////////////////////////  FONCTIONS CREES PAR NOUS MEME /////////////////////////////////////////////////////////////
     // start function create() COMANDES CETTE METHODE(fonction) EST A METTRE DANS ADMIN CONTROLLER !!!   
     #[Route('/reserver-une-chambre/{id}', name: 'create_commande', methods: ['GET', 'POST'])]
     public function createCommande(Chambre $chambre, Request $request, EntityManagerInterface $entityManager): Response
     {
         $commande = new Commande();
-    
+
         // $chambre = $entityManager->getRepository(Chambre::class)->findBy(['deletedAt'=>null]);
 
         $form = $this->createForm(CommandeFormType::class, $commande)
@@ -34,9 +34,9 @@ class CommandeController extends AbstractController
 
             $commande->setChambre($chambre);
 
-          
+
             $diff = $commande->getDateDebut()->diff($commande->getDateFin(), true);
-            
+
             // dd($diff->days);
 
             $prixTotalNuits = $chambre->getPrixJournalier() * $diff->days;
@@ -44,8 +44,8 @@ class CommandeController extends AbstractController
             // dd($prixTotalNuits);
             $commande->setPrixTotal($prixTotalNuits);
 
-                     
-            
+
+
 
             $entityManager->persist($commande);
             $entityManager->flush();
@@ -57,5 +57,5 @@ class CommandeController extends AbstractController
         return $this->render('chambre/create_commande.html.twig', [
             'form' => $form->createView()
         ]);
-    } 
+    }
 }

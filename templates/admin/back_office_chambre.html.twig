@@ -18,7 +18,7 @@
 
 			<div class="row my-5 mx-auto">
 				<div class="col-4">
-					<a class=" btn btn-sm btn-outline-dark" href="{{ path('create_commande') }}">Ajouter ou modifier une chambre</a>
+					<a class=" btn btn-sm btn-outline-dark" href="{{ path('create_commande', {'id': chambre}) }}">Ajouter ou modifier une chambre</a>
 				</div>
 
 			</div>
@@ -55,9 +55,9 @@
 							<td class="text-center">{{ chambre.createdAt | date('d/m/Y H:i:s') }}</td>
 							<td
 								class="text-center">
-								
-					
-								 {# VOIR CHAMBRE  #}
+
+
+								{# VOIR CHAMBRE  #}
 								<a href="{{ path('update_chambre', {'id': chambre.id}) }}" class="text-zoom" title="Modifier la chambre">
 									<i class="fa fa-edit"></i>
 								</a>
