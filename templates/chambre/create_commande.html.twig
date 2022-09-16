@@ -1,25 +1,23 @@
-  {% extends 'base.html.twig' %}   
- {% block title %}Créer ou modifier une commandee{% endblock %} 
+{% extends 'base.html.twig' %}
+{% block title %}Créer ou modifier une commandee
+{% endblock %}
 
 {% block body %}
 
 
-
 	<div class="row">
 		<div class="col-10 mx-auto">
-<br>
-  <h2 class="col-10 mx-auto">Passer une commande</h2>
+			<br>
+			<h2 class="col-10 mx-auto">Passer une commande</h2>
 
 
 			{{ form_start(form) }}
-    
 
 
-			{{ form_end(form) }}   
+			{{ form_end(form) }}
 
 		</div>
 	</div>
-
 
 
 {% endblock %}
